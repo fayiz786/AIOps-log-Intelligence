@@ -11,6 +11,10 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 from typing import List, Optional
 from enum import Enum
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 import random
 
 # Try to import from multiple LLM providers
