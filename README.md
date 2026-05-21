@@ -60,4 +60,37 @@ Perfect for:
 - ✅ Production-grade error handling
 
 ## 🏗️ Architecture
-┌─────────────────┐ │ Log Source │ │ (Files/API) │ └────────┬────────┘ │ ▼ ┌─────────────────────────────┐ │ LogAnalyzer.parse_logs() │ │ (Parse & Normalize) │ └────────┬────────────────────┘ │ ▼ ┌────────────┐ │ LLM API │ ◄─── Optional (with fallback) │ Available? │ └──┬────┬───┘ │ │ YES│ │NO ▼ ▼ ┌────────────────┐ │ classify │ │ with_api() │ └────┬───────────┘ │ ▼ ┌─────────────────────────────┐ │ AlertSummary Objects │ │ (Structured Output) │ └────────┬────────────────────┘ │ ┌───┴────┐ ▼ ▼ ┌──────┐ ┌──────────┐ │Table │ │JSON File │ │Output│ │Export │ └──────┘ └──────────┘
+┌─────────────────┐ │ Log Source │ │ (Files/API) │ └────────┬────────┘ │ 
+▼ ┌─────────────────────────────┐ │ LogAnalyzer.parse_logs() │ │ (Parse & Normalize) │ └────────┬────────────────────┘ │
+▼ ┌────────────┐ │ LLM API │ ◄─── Optional (with fallback) │ Available? │ └──┬────┬───┘ │ 
+│ YES│ │NO ▼ ▼ ┌────────────────┐ │ classify │ │ with_api() │ └────┬───────────┘ │ 
+▼ ┌─────────────────────────────┐ │ AlertSummary Objects │ │ (Structured Output) │ └────────┬────────────────────┘ │
+┌───┴────┐ ▼ ▼ ┌──────┐ ┌──────────┐ │Table │ │JSON File │ │Output│ │Export │ └──────┘ └──────────┘
+
+## 📦 Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip package manager
+
+### Basic Installation (Rule-based only)
+
+```bash
+# Clone the repository
+git clone https://github.com/fayiz786/AIOps-log-Intelligence.git
+cd AIOps-log-Intelligence
+
+# No additional dependencies required for rule-based classification
+python aiops_log_analyzer.py
+
+## With LLM Support (Recommended)
+Option 1: Using Claude (Anthropic)
+# Install Anthropic SDK
+pip install anthropic
+
+# Set your API key
+export ANTHROPIC_API_KEY="sk-ant-..."
+
+# Run the analyzer
+python aiops_log_analyzer.py
